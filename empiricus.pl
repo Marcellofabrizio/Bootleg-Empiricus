@@ -4,7 +4,6 @@ cliente(lucas, 28, moderado, 4000, 1200, 5000, 0, []).
 cliente(gabriel, 24, arrojado, 50000, 10000, 20000, 2, []).
 cliente(bettina, 22, conservador, 1000, 800, 200, 0, []).
 
-(mes,ano,taxa)
 taxa_selic(1,2018,0.5924).
 taxa_selic(2,2018,0.4723).
 taxa_selic(3,2018,0.5402).
@@ -167,6 +166,7 @@ taxa_dolar(01, 2022, 5.3046).
 taxa_dolar(02, 2022, 5.1601).
 taxa_dolar(03, 2022, 4.7395).
 
+% taxa_ibovespa(Mes, Ano, Valor).
 taxa_ibovespa(01, 2018, 84.913).
 taxa_ibovespa(02, 2018, 85.354).
 taxa_ibovespa(03, 2018, 85.366).
@@ -218,6 +218,15 @@ taxa_ibovespa(12, 2021, 104.822).
 taxa_ibovespa(01, 2022, 112.144).
 taxa_ibovespa(02, 2022, 113.142).
 taxa_ibovespa(03, 2022, 119.999).
+
+viabilidade_ibovespa(Mes, Ano, Fator) :-
+    % TO-DO Por enquanto isso só pega um Ano/Mês específico. Tem que dar um jeito de pegar todos meses até Mes e Ano.
+    % TO-DO Tem que fazer um cálculo de verdade que mostre o trend do negócio.
+
+    % Achar todos os Valores V que existam para esse Mes e Ano e colocá-los em Vs
+    findall(V, taxa_ibovespa(Mes, Ano, V), Vs),
+    % Somar todos valores de Vs em Fator.
+    sum_list(Vs, Fator).
 
 poupanca_adequada(Poupado, Dependents, Min) :-
     Min is Dependents * 5000,
