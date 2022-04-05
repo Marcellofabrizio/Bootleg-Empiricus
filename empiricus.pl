@@ -235,3 +235,6 @@ poupanca_adequada(Poupado, Dependents, Min) :-
 poupanca_valida(Nome) :-
     cliente(Nome,_,_,Poupado,_,_,Dependentes,_),
     (Dependentes + 1) * 5000 =< Poupado. 
+
+renda_minima(Dependentes, RendaMinima) :-
+    RendaMinima is 15000 + (4000*Dependentes).
