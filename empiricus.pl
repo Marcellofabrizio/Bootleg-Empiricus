@@ -236,5 +236,12 @@ poupanca_valida(Nome) :-
     cliente(Nome,_,_,Poupado,_,_,Dependentes,_),
     (Dependentes + 1) * 5000 =< Poupado. 
 
-renda_minima(Dependentes, RendaMinima) :-
+% Renda minima que o cara tem que ter
+renda_minima(Nome, RendaMinima) :-
+    cliente(Nome,_,_,_,_,_,Dependentes,_),
     RendaMinima is 15000 + (4000*Dependentes).
+
+renda_adequada(Nome) :-
+    cliente(Nome,_,_,_,Renda,_,_,_),
+    renda_minima(Nome, RendaMinima),
+    (Renda*12) > RendaMinima. % renda do ano deve ser maior que a renda minima para ser adequada
