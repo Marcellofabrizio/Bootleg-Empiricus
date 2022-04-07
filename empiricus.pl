@@ -4,6 +4,10 @@ cliente(lucas, 28, moderado, 4000, 1200, 5000, 0, []).
 cliente(gabriel, 24, arrojado, 50000, 10000, 20000, 2, []).
 cliente(bettina, 22, conservador, 1000, 800, 200, 0, []).
 
+conservador(["Poupança","CDB"]).
+moderado(["CDB", "Tesouro"]).
+arrojado(["Dolar", "Ações"]).
+
 taxa_selic(1,2018,0.5924).
 taxa_selic(2,2018,0.4723).
 taxa_selic(3,2018,0.5402).
@@ -219,6 +223,25 @@ taxa_ibovespa(01, 2022, 112.144).
 taxa_ibovespa(02, 2022, 113.142).
 taxa_ibovespa(03, 2022, 119.999).
 
+
+% investimento(Aplicacao, Risco, Rentabilidade).
+investimento(poupanca, baixo, baixo).
+investimento(cdb, baixo, baixo).
+investimento(tesouro, baixo, medio).
+investimento(acoes, alto, alto).
+investimento(dolar, medio, alto).
+
+verifica(Nome) :-
+    perfil_investmento(Nome, Perfil),!,
+    write(Perfil).    
+
+perfil_investmento(Nome, Perfil) :-
+    poupanca_adequada(Nome,Min),
+    moderado(Perfil).
+
+perfil_investmento(Nome, Perfil) :-
+    conservador(Perfil).
+
 viabilidade_ibovespa(Mes, Ano, Fator) :-
     % TO-DO Por enquanto isso só pega um Ano/Mês específico. Tem que dar um jeito de pegar todos meses até Mes e Ano.
     % TO-DO Tem que fazer um cálculo de verdade que mostre o trend do negócio.
@@ -228,8 +251,9 @@ viabilidade_ibovespa(Mes, Ano, Fator) :-
     % Somar todos valores de Vs em Fator.
     sum_list(Vs, Fator).
 
-poupanca_adequada(Poupado, Dependents, Min) :-
-    Min is Dependents * 5000,
+poupanca_adequada(Nome, Min) :-
+    cliente(Nome,_,_,Poupado,_,_,Dependentes,_),
+    Min is Dependentes+1 * 5000,
     Poupado >= Min.
 
 poupanca_valida(Nome) :-
