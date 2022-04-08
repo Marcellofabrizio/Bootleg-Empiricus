@@ -20,7 +20,6 @@ taxa_selic(9,2018,0.4759).
 taxa_selic(10,2018,0.5513).
 taxa_selic(11,2018,0.5513).
 taxa_selic(12,2018,0.5011).
-
 taxa_selic(1,2019,0.5513).
 taxa_selic(2,2019,0.5011).
 taxa_selic(3,2019,0.4759).
@@ -33,7 +32,6 @@ taxa_selic(9,2019,0.4717).
 taxa_selic(10,2019,0.4880).
 taxa_selic(11,2019,0.3880).
 taxa_selic(12,2019,0.3827).
-
 taxa_selic(1,2020,0.3850).
 taxa_selic(2,2020,0.3006).
 taxa_selic(3,2020,0.3468).
@@ -46,7 +44,6 @@ taxa_selic(9,2020,0.1652).
 taxa_selic(10,2020,0.1652).
 taxa_selic(11,2020,0.1573).
 taxa_selic(12,2020,0.1730).
-
 taxa_selic(1,2021,0.1573).
 taxa_selic(2,2021,0.1415).
 taxa_selic(3,2021,0.2100).
@@ -59,7 +56,6 @@ taxa_selic(9,2021,0.4499).
 taxa_selic(10,2021,0.4935).
 taxa_selic(11,2021,0.5942).
 taxa_selic(12,2021,0.7775).
-
 taxa_selic(1,2022,0,7619).
 taxa_selic(2,2022,0,7400).
 
@@ -75,7 +71,6 @@ taxa_cdi(09,2018,0.4700).
 taxa_cdi(10,2018,0.5400).
 taxa_cdi(11,2018,0.4900).
 taxa_cdi(12,2018,0.4900).
-
 taxa_cdi(01,2019,0.5400).
 taxa_cdi(02,2019,0.4900).
 taxa_cdi(03,2019,0.4700).
@@ -88,7 +83,6 @@ taxa_cdi(09,2019,0.4600).
 taxa_cdi(10,2019,0.4800).
 taxa_cdi(11,2019,0.3800).
 taxa_cdi(12,2019,0.3700).
-
 taxa_cdi(01,2020,0.3800).
 taxa_cdi(02,2020,0.2900).
 taxa_cdi(03,2020,0.3400).
@@ -101,7 +95,6 @@ taxa_cdi(09,2020,0.1600).
 taxa_cdi(10,2020,0.1600).
 taxa_cdi(11,2020,0.1500).
 taxa_cdi(12,2020,0.1600).
-
 taxa_cdi(01,2021,0.1500).
 taxa_cdi(02,2021,0.1300).
 taxa_cdi(03,2021,0.2000).
@@ -114,61 +107,10 @@ taxa_cdi(09,2021,0.4400).
 taxa_cdi(10,2021,0.4900).
 taxa_cdi(11,2021,0.5900).
 taxa_cdi(12,2021,0.7700).
-
 taxa_cdi(01,2022,0.7300).
 taxa_cdi(02,2022,0.7600).
 
-taxa_dolar(01, 2018, 3.1859).
-taxa_dolar(02, 2018, 3.2462).
-taxa_dolar(03, 2018, 3.3051).
-taxa_dolar(04, 2018, 3.5072).
-taxa_dolar(05, 2018, 3.7235).
-taxa_dolar(06, 2018, 3.8771).
-taxa_dolar(07, 2018, 3.7564).
-taxa_dolar(08, 2018, 4.0556).
-taxa_dolar(09, 2018, 4.0491).
-taxa_dolar(10, 2018, 3.7220).
-taxa_dolar(11, 2018, 3.8669).
-taxa_dolar(12, 2018, 3.8812).
-taxa_dolar(01, 2019, 3.6440).
-taxa_dolar(02, 2019, 3.7514).
-taxa_dolar(03, 2019, 3.9247).
-taxa_dolar(04, 2019, 3.9215).
-taxa_dolar(05, 2019, 3.9228).
-taxa_dolar(06, 2019, 3.8520).
-taxa_dolar(07, 2019, 3.8129).
-taxa_dolar(08, 2019, 4.1454).
-taxa_dolar(09, 2019, 4.1556).
-taxa_dolar(10, 2019, 4.0184).
-taxa_dolar(11, 2019, 4.2367).
-taxa_dolar(12, 2019, 4.0195).
-taxa_dolar(01, 2020, 4.2824).
-taxa_dolar(02, 2020, 4.4735).
-taxa_dolar(03, 2020, 5.2054).
-taxa_dolar(04, 2020, 5.4876).
-taxa_dolar(05, 2020, 5.3370).
-taxa_dolar(06, 2020, 5.4672).
-taxa_dolar(07, 2020, 5.2242).
-taxa_dolar(08, 2020, 5.4928).
-taxa_dolar(09, 2020, 5.6120).
-taxa_dolar(10, 2020, 5.7460).
-taxa_dolar(11, 2020, 5.3323).
-taxa_dolar(12, 2020, 5.1940).
-taxa_dolar(01, 2021, 5.4630).
-taxa_dolar(02, 2021, 5.5989).
-taxa_dolar(03, 2021, 5.6333).
-taxa_dolar(04, 2021, 5.4368).
-taxa_dolar(05, 2021, 5.2183).
-taxa_dolar(06, 2021, 4.9696).
-taxa_dolar(07, 2021, 5.2134).
-taxa_dolar(08, 2021, 5.1508).
-taxa_dolar(09, 2021, 5.4433).
-taxa_dolar(10, 2021, 5.6388).
-taxa_dolar(11, 2021, 5.6244).
-taxa_dolar(12, 2021, 5.5713).
-taxa_dolar(01, 2022, 5.3046).
-taxa_dolar(02, 2022, 5.1601).
-taxa_dolar(03, 2022, 4.7395).
+lista_dol([3.1859, 3.2462, 3.3051, 3.5072, 3.7235, 3.8771, 3.7564, 4.0556, 4.0491, 3.7220, 3.8669, 3.8812, 3.6440, 3.7514, 3.9247, 3.9215, 3.9228, 3.8520, 3.8129, 4.1454, 4.1556, 4.0184, 4.2367, 4.0195, 4.2824, 4.4735, 5.2054, 5.4876, 5.3370, 5.4672, 5.2242, 5.4928, 5.6120, 5.7460, 5.3323, 5.1940, 5.4630, 5.5989, 5.6333, 5.4368, 5.2183, 4.9696, 5.2134, 5.1508, 5.4433, 5.6388, 5.6244, 5.5713, 5.3046, 5.1601, 4.7395]).
 
 % taxa_ibovespa(Mes, Ano, Valor).
 taxa_ibovespa(01, 2018, 84.913).
@@ -231,25 +173,37 @@ investimento(tesouro, baixo, medio).
 investimento(acoes, alto, alto).
 investimento(dolar, medio, alto).
 
+soma([], 0) :- !.
+soma([N], N) :- !.
+soma([N|R], S) :-
+    soma(R, SR),
+    S is N + SR.
+
 verifica(Nome) :-
-    perfil_investmento(Nome, Perfil),!,
+    perfil_investmento(Nome, Perfil),
     write(Perfil).    
 
+perfil_investimento(Nome, Perfil) :-
+    poupanca_adequada(Nome, Min),
+    renda_adequada(Nome),
+    arrojado(Perfil).
 perfil_investmento(Nome, Perfil) :-
     poupanca_adequada(Nome,Min),
     moderado(Perfil).
-
 perfil_investmento(Nome, Perfil) :-
     conservador(Perfil).
 
-viabilidade_ibovespa(Mes, Ano, Fator) :-
+viabilidade_ibovespa(Mes, Ano) :-
     % TO-DO Por enquanto isso só pega um Ano/Mês específico. Tem que dar um jeito de pegar todos meses até Mes e Ano.
-    % TO-DO Tem que fazer um cálculo de verdade que mostre o trend do negócio.
-
+    A1 is Ano - 1,
+    findall(V1, taxa_ibovespa(Mes, A1, V1), Vs1),
+    sum_list(Vs1, Fator1),
     % Achar todos os Valores V que existam para esse Mes e Ano e colocá-los em Vs
-    findall(V, taxa_ibovespa(Mes, Ano, V), Vs),
+    findall(V, taxa_ibovespa(Mes, Ano, V2), Vs2),
     % Somar todos valores de Vs em Fator.
-    sum_list(Vs, Fator).
+    sum_list(Vs2, Fator2),
+    Fator1 < Fator2,
+    viavel('Ibovespa'). 
 
 poupanca_adequada(Nome, Min) :-
     cliente(Nome,_,_,Poupado,_,_,Dependentes,_),
