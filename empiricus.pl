@@ -218,9 +218,9 @@ viabilidade_cdi(MesFin, AnoFin, Meses, Total) :-
 calcula_cdi(Mes, Ano, MesIni, AnoIni, Total) :-
     Mes == MesIni, Ano == AnoIni,
     taxa_cdi(Mes, Ano, Total).
-calcula_cdi(Mes, Ano, MesIni, AnoIni, Total) :-
-    periodo(Mes, Ano, Mes, Ano, 2), % Não mexer nesse 2! É o decremento de um mês.
-    taxa_cdi(Mes, Ano, T),
+calcula_cdi(MesAtu, AnoAtu, MesIni, AnoIni, Total) :-
+    periodo(MesAtu, AnoAtu, Mes, Ano, 2), % Não mexer nesse 2! É o decremento de um mês.
+    taxa_cdi(MesAtu, AnoAtu, T),
     calcula_cdi(Mes, Ano, MesIni, AnoIni, Taxa),
     Total is Taxa + T, !.
 
