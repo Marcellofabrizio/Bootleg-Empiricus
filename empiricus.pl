@@ -112,58 +112,58 @@ taxa_cdi(02,2022,0.7600).
 
 lista_dol([3.1859, 3.2462, 3.3051, 3.5072, 3.7235, 3.8771, 3.7564, 4.0556, 4.0491, 3.7220, 3.8669, 3.8812, 3.6440, 3.7514, 3.9247, 3.9215, 3.9228, 3.8520, 3.8129, 4.1454, 4.1556, 4.0184, 4.2367, 4.0195, 4.2824, 4.4735, 5.2054, 5.4876, 5.3370, 5.4672, 5.2242, 5.4928, 5.6120, 5.7460, 5.3323, 5.1940, 5.4630, 5.5989, 5.6333, 5.4368, 5.2183, 4.9696, 5.2134, 5.1508, 5.4433, 5.6388, 5.6244, 5.5713, 5.3046, 5.1601, 4.7395]).
 
-% taxa_ibovespa(Mes, Ano, Valor).
-taxa_ibovespa(01, 2018, 84.913).
-taxa_ibovespa(02, 2018, 85.354).
-taxa_ibovespa(03, 2018, 85.366).
-taxa_ibovespa(04, 2018, 86.116).
-taxa_ibovespa(05, 2018, 76.754).
-taxa_ibovespa(06, 2018, 72.763).
-taxa_ibovespa(07, 2018, 79.220).
-taxa_ibovespa(08, 2018, 76.678).
-taxa_ibovespa(09, 2018, 79.342).
-taxa_ibovespa(10, 2018, 87.424).
-taxa_ibovespa(11, 2018, 89.504).
-taxa_ibovespa(12, 2018, 87.887).
-taxa_ibovespa(01, 2019, 97.394).
-taxa_ibovespa(02, 2019, 95.584).
-taxa_ibovespa(03, 2019, 95.415).
-taxa_ibovespa(04, 2019, 96.353).
-taxa_ibovespa(05, 2019, 97.030).
-taxa_ibovespa(06, 2019, 100.967).
-taxa_ibovespa(07, 2019, 101.812).
-taxa_ibovespa(08, 2019, 101.135).
-taxa_ibovespa(09, 2019, 104.745).
-taxa_ibovespa(10, 2019, 107.220).
-taxa_ibovespa(11, 2019, 108.233).
-taxa_ibovespa(12, 2019, 115.645).
-taxa_ibovespa(01, 2020, 113.761).
-taxa_ibovespa(02, 2020, 104.172).
-taxa_ibovespa(03, 2020, 73.020).
-taxa_ibovespa(04, 2020, 80.506).
-taxa_ibovespa(05, 2020, 87.403).
-taxa_ibovespa(06, 2020, 95.056).
-taxa_ibovespa(07, 2020, 102.912).
-taxa_ibovespa(08, 2020, 99.369).
-taxa_ibovespa(09, 2020, 94.603).
-taxa_ibovespa(10, 2020, 93.952).
-taxa_ibovespa(11, 2020, 108.893).
-taxa_ibovespa(12, 2020, 119.017).
-taxa_ibovespa(01, 2021, 115.068).
-taxa_ibovespa(02, 2021, 110.035).
-taxa_ibovespa(03, 2021, 116.634).
-taxa_ibovespa(04, 2021, 118.894).
-taxa_ibovespa(05, 2021, 126.216).
-taxa_ibovespa(06, 2021, 126.802).
-taxa_ibovespa(07, 2021, 121.801).
-taxa_ibovespa(08, 2021, 118.781).
-taxa_ibovespa(09, 2021, 110.979).
-taxa_ibovespa(10, 2021, 103.501).
-taxa_ibovespa(11, 2021, 101.916).
-taxa_ibovespa(12, 2021, 104.822).
-taxa_ibovespa(01, 2022, 112.144).
-taxa_ibovespa(02, 2022, 113.142).
-taxa_ibovespa(03, 2022, 119.999).
+% fechamentoIbovespa(Mes, Ano, Valor).
+fechamentoIbovespa(01, 2018, 84.913).
+fechamentoIbovespa(02, 2018, 85.354).
+fechamentoIbovespa(03, 2018, 85.366).
+fechamentoIbovespa(04, 2018, 86.116).
+fechamentoIbovespa(05, 2018, 76.754).
+fechamentoIbovespa(06, 2018, 72.763).
+fechamentoIbovespa(07, 2018, 79.220).
+fechamentoIbovespa(08, 2018, 76.678).
+fechamentoIbovespa(09, 2018, 79.342).
+fechamentoIbovespa(10, 2018, 87.424).
+fechamentoIbovespa(11, 2018, 89.504).
+fechamentoIbovespa(12, 2018, 87.887).
+fechamentoIbovespa(01, 2019, 97.394).
+fechamentoIbovespa(02, 2019, 95.584).
+fechamentoIbovespa(03, 2019, 95.415).
+fechamentoIbovespa(04, 2019, 96.353).
+fechamentoIbovespa(05, 2019, 97.030).
+fechamentoIbovespa(06, 2019, 100.967).
+fechamentoIbovespa(07, 2019, 101.812).
+fechamentoIbovespa(08, 2019, 101.135).
+fechamentoIbovespa(09, 2019, 104.745).
+fechamentoIbovespa(10, 2019, 107.220).
+fechamentoIbovespa(11, 2019, 108.233).
+fechamentoIbovespa(12, 2019, 115.645).
+fechamentoIbovespa(01, 2020, 113.761).
+fechamentoIbovespa(02, 2020, 104.172).
+fechamentoIbovespa(03, 2020, 73.020).
+fechamentoIbovespa(04, 2020, 80.506).
+fechamentoIbovespa(05, 2020, 87.403).
+fechamentoIbovespa(06, 2020, 95.056).
+fechamentoIbovespa(07, 2020, 102.912).
+fechamentoIbovespa(08, 2020, 99.369).
+fechamentoIbovespa(09, 2020, 94.603).
+fechamentoIbovespa(10, 2020, 93.952).
+fechamentoIbovespa(11, 2020, 108.893).
+fechamentoIbovespa(12, 2020, 119.017).
+fechamentoIbovespa(01, 2021, 115.068).
+fechamentoIbovespa(02, 2021, 110.035).
+fechamentoIbovespa(03, 2021, 116.634).
+fechamentoIbovespa(04, 2021, 118.894).
+fechamentoIbovespa(05, 2021, 126.216).
+fechamentoIbovespa(06, 2021, 126.802).
+fechamentoIbovespa(07, 2021, 121.801).
+fechamentoIbovespa(08, 2021, 118.781).
+fechamentoIbovespa(09, 2021, 110.979).
+fechamentoIbovespa(10, 2021, 103.501).
+fechamentoIbovespa(11, 2021, 101.916).
+fechamentoIbovespa(12, 2021, 104.822).
+fechamentoIbovespa(01, 2022, 112.144).
+fechamentoIbovespa(02, 2022, 113.142).
+fechamentoIbovespa(03, 2022, 119.999).
 
 
 % investimento(Aplicacao, Risco, Rentabilidade).
@@ -193,17 +193,50 @@ perfil_investmento(Nome, Perfil) :-
 perfil_investmento(Nome, Perfil) :-
     conservador(Perfil).
 
+% Predicado pra pegar os P últimos meses até MesFin/AnoFin.
+% O mês atual conta como 1 mês, então pra voltar 1, P tem que ser maior que 1.
+periodo(MesFin, AnoFin, MesIni, AnoIni, Meses) :-
+    MesFin >= Meses,
+    MesIni is MesFin - (Meses - 1),
+    AnoIni is AnoFin, !.
+periodo(MesFin, AnoFin, MesIni, AnoIni, Meses) :-
+    Meses =< 12 + MesFin,
+    MesIni is 12 - (Meses - MesFin - 1), 
+    AnoIni is AnoFin - 1, !.
+periodo(MesFin, AnoFin, MesIni, AnoIni, Meses) :-
+    Resto is Meses - 12,
+    Ano is AnoFin - 1,
+    periodo(MesFin, Ano, MesIni, AnoIni, Resto).
+
+
+% Por enquanto, só soma todos os valores dos 'Meses' meses até MesFin/AnoFin.
+viabilidade_cdi(MesFin, AnoFin, Meses, Total) :-
+    periodo(MesFin, AnoFin, MesIni, AnoIni, Meses),
+    calcula_cdi(MesFin, AnoFin, MesIni, AnoIni, Total).
+
+% Predicado que soma recursivamente as taxas
+calcula_cdi(Mes, Ano, MesIni, AnoIni, Total) :-
+    Mes == MesIni, Ano == AnoIni,
+    taxa_cdi(Mes, Ano, Total).
+calcula_cdi(Mes, Ano, MesIni, AnoIni, Total) :-
+    periodo(Mes, Ano, Mes, Ano, 2), % Não mexer nesse 2! É o decremento de um mês.
+    taxa_cdi(Mes, Ano, T),
+    calcula_cdi(Mes, Ano, MesIni, AnoIni, Taxa),
+    Total is Taxa + T, !.
+
+
 % Vai calcular o valor do mês corrente e do passado.
 tendencia_ibovespa(Mes, Ano, ValorPassado, ValorCorrente) :-
-    % Achar todos os Valores C que existam para esse Mes e Ano e colocá-los em Cs
-    findall(C, taxa_ibovespa(Mes, Ano, C), Cs),
+    % Achar todos os Valores C que existam para esse Mes e Ano e colocá-los na lista Cs
+    findall(C, fechamentoIbovespa(Mes, Ano, C), Cs),
     % Somar todos valores de Cs em ValorCorrente.
     sum_list(Cs, ValorCorrente),
     % Fazer o mesmo pro AnoPassado
     AnoPassado is Ano - 1,
-    findall(P, taxa_ibovespa(Mes, AnoPassado, P), Ps),
+    findall(P, fechamentoIbovespa(Mes, AnoPassado, P), Ps),
     sum_list(Ps, ValorPassado).
 
+% Se a tendência for crescente, mostra quão grande é o crescimento.
 viabilidade_ibovespa(Mes, Ano, Fator) :-
     tendencia_ibovespa(Mes, Ano, ValorCorrente, ValorPassado),
     ValorPassado < ValorCorrente,
