@@ -193,17 +193,22 @@ perfil_investmento(Nome, Perfil) :-
 perfil_investmento(Nome, Perfil) :-
     conservador(Perfil).
 
-viabilidade_ibovespa(Mes, Ano) :-
-    % TO-DO Por enquanto isso só pega um Ano/Mês específico. Tem que dar um jeito de pegar todos meses até Mes e Ano.
-    A1 is Ano - 1,
-    findall(V1, taxa_ibovespa(Mes, A1, V1), Vs1),
-    sum_list(Vs1, Fator1),
-    % Achar todos os Valores V que existam para esse Mes e Ano e colocá-los em Vs
-    findall(V, taxa_ibovespa(Mes, Ano, V2), Vs2),
-    % Somar todos valores de Vs em Fator.
-    sum_list(Vs2, Fator2),
-    Fator1 < Fator2,
-    viavel('Ibovespa'). 
+% Vai calcular o valor do mês corrente e do passado.
+tendencia_ibovespa(Mes, Ano, ValorPassado, ValorCorrente) :-
+    % Achar todos os Valores C que existam para esse Mes e Ano e colocá-los em Cs
+    findall(C, taxa_ibovespa(Mes, Ano, C), Cs),
+    % Somar todos valores de Cs em ValorCorrente.
+    sum_list(Cs, ValorCorrente),
+    % Fazer o mesmo pro AnoPassado
+    AnoPassado is Ano - 1,
+    findall(P, taxa_ibovespa(Mes, AnoPassado, P), Ps),
+    sum_list(Ps, ValorPassado).
+
+viabilidade_ibovespa(Mes, Ano, Fator) :-
+    tendencia_ibovespa(Mes, Ano, ValorCorrente, ValorPassado),
+    ValorPassado < ValorCorrente,
+    write('Viavel'),
+    Fator is ValorCorrente / ValorPassado.
 
 poupanca_adequada(Nome, Min) :-
     cliente(Nome,_,_,Poupado,_,_,Dependentes,_),
