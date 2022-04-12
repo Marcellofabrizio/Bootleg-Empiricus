@@ -137,68 +137,68 @@ calcula_cdi(MesAtu, AnoAtu, MesIni, AnoIni, Total) :-
 
 
 %============= IBOVESPA =============%
-fechamentoIbovespa(01, 2018, 84.913).
-fechamentoIbovespa(02, 2018, 85.354).
-fechamentoIbovespa(03, 2018, 85.366).
-fechamentoIbovespa(04, 2018, 86.116).
-fechamentoIbovespa(05, 2018, 76.754).
-fechamentoIbovespa(06, 2018, 72.763).
-fechamentoIbovespa(07, 2018, 79.220).
-fechamentoIbovespa(08, 2018, 76.678).
-fechamentoIbovespa(09, 2018, 79.342).
-fechamentoIbovespa(10, 2018, 87.424).
-fechamentoIbovespa(11, 2018, 89.504).
-fechamentoIbovespa(12, 2018, 87.887).
-fechamentoIbovespa(01, 2019, 97.394).
-fechamentoIbovespa(02, 2019, 95.584).
-fechamentoIbovespa(03, 2019, 95.415).
-fechamentoIbovespa(04, 2019, 96.353).
-fechamentoIbovespa(05, 2019, 97.030).
-fechamentoIbovespa(06, 2019, 100.967).
-fechamentoIbovespa(07, 2019, 101.812).
-fechamentoIbovespa(08, 2019, 101.135).
-fechamentoIbovespa(09, 2019, 104.745).
-fechamentoIbovespa(10, 2019, 107.220).
-fechamentoIbovespa(11, 2019, 108.233).
-fechamentoIbovespa(12, 2019, 115.645).
-fechamentoIbovespa(01, 2020, 113.761).
-fechamentoIbovespa(02, 2020, 104.172).
-fechamentoIbovespa(03, 2020, 73.020).
-fechamentoIbovespa(04, 2020, 80.506).
-fechamentoIbovespa(05, 2020, 87.403).
-fechamentoIbovespa(06, 2020, 95.056).
-fechamentoIbovespa(07, 2020, 102.912).
-fechamentoIbovespa(08, 2020, 99.369).
-fechamentoIbovespa(09, 2020, 94.603).
-fechamentoIbovespa(10, 2020, 93.952).
-fechamentoIbovespa(11, 2020, 108.893).
-fechamentoIbovespa(12, 2020, 119.017).
-fechamentoIbovespa(01, 2021, 115.068).
-fechamentoIbovespa(02, 2021, 110.035).
-fechamentoIbovespa(03, 2021, 116.634).
-fechamentoIbovespa(04, 2021, 118.894).
-fechamentoIbovespa(05, 2021, 126.216).
-fechamentoIbovespa(06, 2021, 126.802).
-fechamentoIbovespa(07, 2021, 121.801).
-fechamentoIbovespa(08, 2021, 118.781).
-fechamentoIbovespa(09, 2021, 110.979).
-fechamentoIbovespa(10, 2021, 103.501).
-fechamentoIbovespa(11, 2021, 101.916).
-fechamentoIbovespa(12, 2021, 104.822).
-fechamentoIbovespa(01, 2022, 112.144).
-fechamentoIbovespa(02, 2022, 113.142).
-fechamentoIbovespa(03, 2022, 119.999).
+fechamento_ibovespa(01, 2018, 84.913).
+fechamento_ibovespa(02, 2018, 85.354).
+fechamento_ibovespa(03, 2018, 85.366).
+fechamento_ibovespa(04, 2018, 86.116).
+fechamento_ibovespa(05, 2018, 76.754).
+fechamento_ibovespa(06, 2018, 72.763).
+fechamento_ibovespa(07, 2018, 79.220).
+fechamento_ibovespa(08, 2018, 76.678).
+fechamento_ibovespa(09, 2018, 79.342).
+fechamento_ibovespa(10, 2018, 87.424).
+fechamento_ibovespa(11, 2018, 89.504).
+fechamento_ibovespa(12, 2018, 87.887).
+fechamento_ibovespa(01, 2019, 97.394).
+fechamento_ibovespa(02, 2019, 95.584).
+fechamento_ibovespa(03, 2019, 95.415).
+fechamento_ibovespa(04, 2019, 96.353).
+fechamento_ibovespa(05, 2019, 97.030).
+fechamento_ibovespa(06, 2019, 100.967).
+fechamento_ibovespa(07, 2019, 101.812).
+fechamento_ibovespa(08, 2019, 101.135).
+fechamento_ibovespa(09, 2019, 104.745).
+fechamento_ibovespa(10, 2019, 107.220).
+fechamento_ibovespa(11, 2019, 108.233).
+fechamento_ibovespa(12, 2019, 115.645).
+fechamento_ibovespa(01, 2020, 113.761).
+fechamento_ibovespa(02, 2020, 104.172).
+fechamento_ibovespa(03, 2020, 73.020).
+fechamento_ibovespa(04, 2020, 80.506).
+fechamento_ibovespa(05, 2020, 87.403).
+fechamento_ibovespa(06, 2020, 95.056).
+fechamento_ibovespa(07, 2020, 102.912).
+fechamento_ibovespa(08, 2020, 99.369).
+fechamento_ibovespa(09, 2020, 94.603).
+fechamento_ibovespa(10, 2020, 93.952).
+fechamento_ibovespa(11, 2020, 108.893).
+fechamento_ibovespa(12, 2020, 119.017).
+fechamento_ibovespa(01, 2021, 115.068).
+fechamento_ibovespa(02, 2021, 110.035).
+fechamento_ibovespa(03, 2021, 116.634).
+fechamento_ibovespa(04, 2021, 118.894).
+fechamento_ibovespa(05, 2021, 126.216).
+fechamento_ibovespa(06, 2021, 126.802).
+fechamento_ibovespa(07, 2021, 121.801).
+fechamento_ibovespa(08, 2021, 118.781).
+fechamento_ibovespa(09, 2021, 110.979).
+fechamento_ibovespa(10, 2021, 103.501).
+fechamento_ibovespa(11, 2021, 101.916).
+fechamento_ibovespa(12, 2021, 104.822).
+fechamento_ibovespa(01, 2022, 112.144).
+fechamento_ibovespa(02, 2022, 113.142).
+fechamento_ibovespa(03, 2022, 119.999).
 
 
 % Vai calcular o valor do mês corrente e do passado.
 tendencia_ibovespa(Ano, ValorPassado, ValorCorrente) :-
     % Achar todos os Valores C que existam para esse Mes e Ano e colocá-los na lista Cs
-    findall(C, fechamentoIbovespa(_, Ano, C), Cs),
+    findall(C, fechamento_ibovespa(_, Ano, C), Cs),
     % Somar todos valores de Cs em ValorCorrente.
     sum_list(Cs, ValorCorrente),
     % Fazer o mesmo pro AnoPassado
     AnoPassado is Ano - 1,
-    findall(P, fechamentoIbovespa(_, AnoPassado, P), Ps),
+    findall(P, fechamento_ibovespa(_, AnoPassado, P), Ps),
     sum_list(Ps, ValorPassado).
 
 % Se a tendência for crescente, mostra quão grande é o crescimento.
