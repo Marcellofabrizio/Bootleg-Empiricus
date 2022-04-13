@@ -4,10 +4,6 @@ cliente(lucas, 28, moderado, 4000, 1200, 5000, 0, []).
 cliente(gabriel, 24, arrojado, 50000, 10000, 20000, 2, []).
 cliente(bettina, 22, conservador, 1000, 800, 200, 0, []).
 
-conservador(["Poupança","CDB"]).
-moderado(["CDB", "Tesouro"]).
-arrojado(["Dolar", "Ações"]).
-
 taxa_selic(1,2018,0.5924).
 taxa_selic(2,2018,0.4723).
 taxa_selic(3,2018,0.5402).
@@ -165,13 +161,22 @@ fechamentoIbovespa(01, 2022, 112.144).
 fechamentoIbovespa(02, 2022, 113.142).
 fechamentoIbovespa(03, 2022, 119.999).
 
-
 % investimento(Aplicacao, Risco, Rentabilidade).
 investimento(poupanca, baixo, baixo).
 investimento(cdb, baixo, baixo).
 investimento(tesouro, baixo, medio).
+investimento(lci, medio, medio).
+investimento(dolar, medio, medio).
 investimento(acoes, alto, alto).
-investimento(dolar, medio, alto).
+
+conservador(Nomes) :-
+	findall(Nome, investimento(Nome, baixo, _), Nomes).
+
+moderado(Nomes) :-
+	findall(Nome, investimento(Nome, medio, _), Nomes).
+
+arrojado(Nomes) :-
+	findall(Nome, investimento(Nome, alto, _), Nomes).
 
 soma([], 0) :- !.
 soma([N], N) :- !.
@@ -183,15 +188,15 @@ verifica(Nome) :-
     perfil_investmento(Nome, Perfil),
     write(Perfil).    
 
-perfil_investimento(Nome, Perfil) :-
-    poupanca_adequada(Nome, Min),
+perfil_investmento(Nome, Perfil) :-
+    poupanca_adequada(Nome,  _),
     renda_adequada(Nome),
-    arrojado(Perfil).
+    arrojado(Perfil), !.
 perfil_investmento(Nome, Perfil) :-
-    poupanca_adequada(Nome,Min),
-    moderado(Perfil).
-perfil_investmento(Nome, Perfil) :-
-    conservador(Perfil).
+    poupanca_adequada(Nome, _),
+    moderado(Perfil), !.
+perfil_investmento(_, Perfil) :-
+    conservador(Perfil), !.
 
 % Predicado pra pegar os P últimos meses até MesFin/AnoFin.
 % O mês atual conta como 1 mês, então pra voltar 1, P tem que ser maior que 1.
@@ -206,13 +211,13 @@ periodo(MesFin, AnoFin, MesIni, AnoIni, Meses) :-
 periodo(MesFin, AnoFin, MesIni, AnoIni, Meses) :-
     Resto is Meses - 12,
     Ano is AnoFin - 1,
-    periodo(MesFin, Ano, MesIni, AnoIni, Resto).
-
+    periodo(MesFin, Ano, MesIni, AnoIni, Resto).          
 
 % Por enquanto, só soma todos os valores dos 'Meses' meses até MesFin/AnoFin.
-viabilidade_cdi(MesFin, AnoFin, Meses, Total) :-
+viabilidade_cdi(MesFin, AnoFin, Meses, Media) :-
     periodo(MesFin, AnoFin, MesIni, AnoIni, Meses),
-    calcula_cdi(MesFin, AnoFin, MesIni, AnoIni, Total).
+    calcula_cdi(MesFin, AnoFin, MesIni, AnoIni, Total),
+    Media is Total/Meses.
 
 % Predicado que soma recursivamente as taxas
 calcula_cdi(Mes, Ano, MesIni, AnoIni, Total) :-
@@ -223,7 +228,6 @@ calcula_cdi(MesAtu, AnoAtu, MesIni, AnoIni, Total) :-
     taxa_cdi(MesAtu, AnoAtu, T),
     calcula_cdi(Mes, Ano, MesIni, AnoIni, Taxa),
     Total is Taxa + T, !.
-
 
 % Vai calcular o valor do mês corrente e do passado.
 tendencia_ibovespa(Mes, Ano, ValorPassado, ValorCorrente) :-
@@ -245,7 +249,7 @@ viabilidade_ibovespa(Mes, Ano, Fator) :-
 
 poupanca_adequada(Nome, Min) :-
     cliente(Nome,_,_,Poupado,_,_,Dependentes,_),
-    Min is Dependentes+1 * 5000,
+    Min is (Dependentes+1) * 5000,
     Poupado >= Min.
 
 poupanca_valida(Nome) :-
@@ -260,4 +264,6 @@ renda_minima(Nome, RendaMinima) :-
 renda_adequada(Nome) :-
     cliente(Nome,_,_,_,Renda,_,_,_),
     renda_minima(Nome, RendaMinima),
-    (Renda*12) > RendaMinima. % renda do ano deve ser maior que a renda minima para ser adequada
+    (Renda*12) > RendaMinima. 
+% renda do ano deve ser maior que a renda minima para ser adequada
+
