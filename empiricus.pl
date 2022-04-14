@@ -208,11 +208,11 @@ taxa_cdi(12, 2021, 0.7700).
 taxa_cdi(01, 2022, 0.7300).
 taxa_cdi(02, 2022, 0.7600).
 
-investe_cdi(Mes, Ano, Meses) :-
+investe_cdb(Mes, Ano, Meses) :-
     viabilidade_cdi(Mes, Ano, Meses),
-    write('CDI viável para compra.'),nl, !.
-investe_cdi(_, _, _) :-
-    write('CDI viável para a venda.'),nl.
+    write('CDB viável para compra.'),nl, !.
+investe_cdb(_, _, _) :-
+    write('CDB viável para a venda.'),nl.
 
 % Por enquanto, só soma todos os valores dos _Meses meses até _MesFin/_AnoFin.
 viabilidade_cdi(Mes, Ano, Meses) :-
@@ -384,7 +384,7 @@ investir(Nome, Mes, Ano) :-
 investir(Nome, Mes, Ano) :-
     renda_media(Nome),
     cliente(Nome, conservador, _, _, _, _),
-    investe_cdi(Mes, Ano, 3).
+    investe_cdb(Mes, Ano, 3).
 investir(Nome, _, _) :-
     renda_baixa(Nome),
     cliente(Nome, conservador, _, _, _, _),
