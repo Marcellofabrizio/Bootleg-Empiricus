@@ -1,8 +1,8 @@
 %  cliente(nome, perfil, poupanca, renda, investimento, dependentes)
 % Perfil define quanto risco o cara tá disposto a correr.
-cliente(lucas  , moderado   ,  5000,  1200,  5000, 0).
-cliente(gabriel, arrojado   , 50000, 10000, 20000, 2).
-cliente(bettina, conservador,  1000,   800,   200, 0).
+cliente(sommerville, moderado   ,  5000,  1200,  5000, 0).
+cliente(pressman   , arrojado   , 50000, 10000, 20000, 2).
+cliente(bettina    , conservador,  1000,   800,   200, 0).
 
 
 %======== TESOURO SELIC ========%
@@ -59,7 +59,7 @@ taxa_selic(2, 2022, 0,7400).
 
 investe_selic(Mes, Ano, Meses) :-
     viabilidade_selic(Mes, Ano, Meses),
-    write('Selic viável para compra.').
+    write('Selic viável para compra.'), !.
 investe_selic(_,_,_) :-
     write('Selic viável para a venda.').
 
@@ -135,7 +135,7 @@ taxa_dolar(02, 2022, 5,1599).
 
 investe_dolar(Mes, Ano, Meses) :-
     viabilidade_dolar(Mes, Ano, Meses),
-    write('Dólar viável para compra.').
+    write('Dólar viável para compra.'), !.
 investe_dolar(_, _, _) :-
     write('Dólar viável para venda.').
 
@@ -211,12 +211,12 @@ taxa_cdi(02, 2022, 0.7600).
 
 investe_cdi(Mes, Ano, Meses) :-
     viabilidade_cdi(Mes, Ano, Meses),
-    write('CDI viável para compra.').
-investe_cdi(Mes, Ano, Meses) :-
+    write('CDI viável para compra.'), !.
+investe_cdi(_, _, _) :-
     write('CDI viável para a venda.').
 
 % Por enquanto, só soma todos os valores dos _Meses meses até _MesFin/_AnoFin.
-viabilidade_cdi(MesFin, AnoFin, Meses, Total) :-
+viabilidade_cdi(Mes, Ano, Meses) :-
     periodo(Mes, Ano, MesIni, AnoIni, Meses),
     calcula_cdi(Mes, Ano, MesIni, AnoIni, Atual),
     periodo(MesIni, AnoIni, MesIniAnt, AnoIniAnt, Meses),
@@ -289,7 +289,7 @@ fechamento_ibovespa(03, 2022, 119.999).
 
 investe_ibovespa(Mes, Ano, Meses) :-
     viabilidade_ibovespa(Mes, Ano, Meses),
-    write('Ibovespa viável para compra.').
+    write('Ibovespa viável para compra.'), !.
 investe_ibovespa(_,_,_) :-
     write('Ibovespa viável para a venda.').
 
@@ -358,15 +358,15 @@ investir(Nome, Mes, Ano) :-
     renda_alta(Nome),
     cliente(Nome, moderado, _, _, _, _),
     viabilidade_dolar(Mes, Ano, 3). 
-investir(Nome, Mes, Ano) :-
+investir(Nome, _, _) :-
     renda_alta(Nome),
     cliente(Nome, conservador, _, _, _, _),
     write('Investir em LCI/LCA.').
 investir(Nome, Mes, Ano) :-
     renda_media(Nome),
     cliente(Nome, arrojado, _, _, _, _),
-    investe_selic(Mes, Ano, 3)
-    write('Investir no Tesouro Público.').
+    investe_selic(Mes, Ano, 3).
+    % write('Investir no Tesouro Público.').
 investir(Nome, Mes, Ano) :-
     renda_media(Nome),
     cliente(Nome, conservador, _, _, _, _),
@@ -374,7 +374,7 @@ investir(Nome, Mes, Ano) :-
 investir(Nome, Mes, Ano) :-
     renda_baixa(Nome),
     cliente(Nome, conservador, _, _, _, _),
-    viabilidade_cbd(Mes, Ano, 3, _), 
+    % viabilidade_cbd(Mes, Ano, 3, _), 
     write('Cdb').
 investir(Nome, _, _) :-
     renda_baixa(Nome),
