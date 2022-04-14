@@ -4,7 +4,6 @@ cliente(lucas  , moderado   ,  5000,  1200,  5000, 0).
 cliente(gabriel, arrojado   , 50000, 10000, 20000, 2).
 cliente(bettina, conservador,  1000,   800,   200, 0).
 
-viabilidade_cbd(_, _, _, _) :- !.
 
 %======== TESOURO SELIC ========%
 taxa_selic(1, 2018, 0.5924).
@@ -58,10 +57,103 @@ taxa_selic(12, 2021, 0.7775).
 taxa_selic(1, 2022, 0,7619).
 taxa_selic(2, 2022, 0,7400).
 
-viabilidade_selic(_, _, _, _) :- !.
+investe_selic(Mes, Ano, Meses) :-
+    viabilidade_selic(Mes, Ano, Meses),
+    write('Selic viável para compra.').
+investe_selic(_,_,_) :-
+    write('Selic viável para a venda.').
+
+viabilidade_selic(Mes, Ano, Meses) :-
+    periodo(Mes, Ano, MesIni, AnoIni, Meses),
+    calcula_selic(Mes, Ano, MesIni, AnoIni, Atual),
+    periodo(MesIni, AnoIni, MesIniAnt, AnoIniAnt, Meses),
+    calcula_selic(MesIni, AnoIni, MesIniAnt, AnoIniAnt, Ultimo),
+    Atual > Ultimo.
+
+calcula_selic(Mes, Ano, MesIni, AnoIni, Total) :-
+    Mes == MesIni, Ano == AnoIni,
+    taxa_selic(Mes, Ano, Total).
+calcula_selic(MesAtu, AnoAtu, MesIni, AnoIni, Total) :-
+    periodo(MesAtu, AnoAtu, Mes, Ano, 2),
+    taxa_selic(MesAtu, AnoAtu, T),
+    calcula_selic(Mes, Ano, MesIni, AnoIni, Taxa),
+    Total is Taxa + T, !.
 
 
 %====== DOLAR ======%
+
+taxa_dolar(01, 2018, 3,1859). 
+taxa_dolar(02, 2018, 3,2462). 
+taxa_dolar(03, 2018, 3,3051). 
+taxa_dolar(04, 2018, 3,5072). 
+taxa_dolar(05, 2018, 3,7235). 
+taxa_dolar(06, 2018, 3,8771). 
+taxa_dolar(07, 2018, 3,7564). 
+taxa_dolar(08, 2018, 4,0556). 
+taxa_dolar(09, 2018, 4,0491). 
+taxa_dolar(10, 2018, 3,7220). 
+taxa_dolar(11, 2018, 3,8669). 
+taxa_dolar(12, 2018, 3,8812). 
+taxa_dolar(01, 2019, 3,6440). 
+taxa_dolar(02, 2019, 3,7514). 
+taxa_dolar(03, 2019, 3,9247). 
+taxa_dolar(04, 2019, 3,9215). 
+taxa_dolar(05, 2019, 3,9228). 
+taxa_dolar(06, 2019, 3,8520). 
+taxa_dolar(07, 2019, 3,8129). 
+taxa_dolar(08, 2019, 4,1454). 
+taxa_dolar(09, 2019, 4,1556). 
+taxa_dolar(10, 2019, 4,0184). 
+taxa_dolar(11, 2019, 4,2367). 
+taxa_dolar(12, 2019, 4,0195). 
+taxa_dolar(01, 2020, 4,2824). 
+taxa_dolar(02, 2020, 4,4735). 
+taxa_dolar(03, 2020, 5,2054). 
+taxa_dolar(04, 2020, 5,4876). 
+taxa_dolar(05, 2020, 5,3370). 
+taxa_dolar(06, 2020, 5,4672). 
+taxa_dolar(07, 2020, 5,2242). 
+taxa_dolar(08, 2020, 5,4928). 
+taxa_dolar(09, 2020, 5,6120). 
+taxa_dolar(10, 2020, 5,7460). 
+taxa_dolar(11, 2020, 5,3323). 
+taxa_dolar(12, 2020, 5,1940). 
+taxa_dolar(01, 2021, 5,4630). 
+taxa_dolar(02, 2021, 5,5989). 
+taxa_dolar(03, 2021, 5,6333). 
+taxa_dolar(04, 2021, 5,4368). 
+taxa_dolar(05, 2021, 5,2183). 
+taxa_dolar(06, 2021, 4,9696). 
+taxa_dolar(07, 2021, 5,2134). 
+taxa_dolar(08, 2021, 5,1508). 
+taxa_dolar(09, 2021, 5,4433). 
+taxa_dolar(10, 2021, 5,6388). 
+taxa_dolar(11, 2021, 5,6244). 
+taxa_dolar(12, 2021, 5,5713). 
+taxa_dolar(01, 2022, 5,3046). 
+taxa_dolar(02, 2022, 5,1599). 
+
+investe_dolar(Mes, Ano, Meses) :-
+    viabilidade_dolar(Mes, Ano, Meses),
+    write('Dólar viável para compra.').
+investe_dolar(_, _, _) :-
+    write('Dólar viável para venda.').
+
+viabilidade_dolar(Mes, Ano, Meses) :-
+    periodo(Mes, Ano, MesIni, AnoIni, Meses),
+    calcula_dolar(Mes, Ano, MesIni, AnoIni, Atual),
+    periodo(MesIni, AnoIni, MesIniAnt, AnoIniAnt, Meses),
+    calcula_dolar(MesIni, AnoIni, MesIniAnt, AnoIniAnt, Ultimo),
+    Atual > Ultimo.
+
+calcula_dolar(Mes, Ano, MesIni, AnoIni, Total) :-
+    Mes == MesIni, Ano == AnoIni,
+    fechamento_ibovespa(Mes, Ano, Total).
+calcula_dolar(MesAtu, AnoAtu, MesIni, AnoIni, Total) :-
+    periodo(MesAtu, AnoAtu, Mes, Ano, 2), % Não mexer nesse 2! É o decremento de um mês.
+    fechamento_ibovespa(MesAtu, AnoAtu, T),
+    calcula_dolar(Mes, Ano, MesIni, AnoIni, Taxa),
+    Total is Taxa + T, !.
 
 viabilidade_dolar(_, _, _, _) :- !.
 
@@ -120,14 +212,17 @@ taxa_cdi(02, 2022, 0.7600).
 
 investe_cdi(Mes, Ano, Meses) :-
     viabilidade_cdi(Mes, Ano, Meses),
-    write('CDI viável para compra').
+    write('CDI viável para compra.').
 investe_cdi(Mes, Ano, Meses) :-
-    write('CDI viável para a venda').
+    write('CDI viável para a venda.').
 
 % Por enquanto, só soma todos os valores dos _Meses meses até _MesFin/_AnoFin.
 viabilidade_cdi(MesFin, AnoFin, Meses, Total) :-
-    periodo(MesFin, AnoFin, MesIni, AnoIni, Meses),
-    calcula_cdi(MesFin, AnoFin, MesIni, AnoIni, Total).
+    periodo(Mes, Ano, MesIni, AnoIni, Meses),
+    calcula_cdi(Mes, Ano, MesIni, AnoIni, Atual),
+    periodo(MesIni, AnoIni, MesIniAnt, AnoIniAnt, Meses),
+    calcula_cdi(MesIni, AnoIni, MesIniAnt, AnoIniAnt, Ultimo),
+    Atual > Ultimo.
 
 % Predicado que soma recursivamente as taxas
 calcula_cdi(Mes, Ano, MesIni, AnoIni, Total) :-
@@ -195,11 +290,11 @@ fechamento_ibovespa(03, 2022, 119.999).
 
 investe_ibovespa(Mes, Ano, Meses) :-
     viabilidade_ibovespa(Mes, Ano, Meses),
-    write('Ibovespa viável para compra').
+    write('Ibovespa viável para compra.').
 investe_ibovespa(_,_,_) :-
-    write('Ibovespa viável para a venda').
+    write('Ibovespa viável para a venda.').
 
-viabilidade_ibovespa(Mes, Ano, Meses) :-
+viabilidade_dolar(Mes, Ano, Meses) :-
     periodo(Mes, Ano, MesIni, AnoIni, Meses),
     calcula_ibovespa(Mes, Ano, MesIni, AnoIni, Atual),
     periodo(MesIni, AnoIni, MesIniAnt, AnoIniAnt, Meses),
@@ -215,27 +310,6 @@ calcula_ibovespa(MesAtu, AnoAtu, MesIni, AnoIni, Total) :-
     calcula_ibovespa(Mes, Ano, MesIni, AnoIni, Taxa),
     Total is Taxa + T, !.
 
-investe_selic(Mes, Ano, Meses) :-
-    viabilidade_selic(Mes, Ano, Meses),
-    write('Selic viável para compra').
-investe_selic(_,_,_) :-
-    write('Selic viável para a venda').
-
-viabilidade_selic(Mes, Ano, Meses) :-
-    periodo(Mes, Ano, MesIni, AnoIni, Meses),
-    calcula_selic(Mes, Ano, MesIni, AnoIni, Atual),
-    periodo(MesIni, AnoIni, MesIniAnt, AnoIniAnt, Meses),
-    calcula_selic(MesIni, AnoIni, MesIniAnt, AnoIniAnt, Ultimo),
-    Atual > Ultimo.
-
-calcula_selic(Mes, Ano, MesIni, AnoIni, Total) :-
-    Mes == MesIni, Ano == AnoIni,
-    taxa_selic(Mes, Ano, Total).
-calcula_selic(MesAtu, AnoAtu, MesIni, AnoIni, Total) :-
-    periodo(MesAtu, AnoAtu, Mes, Ano, 2),
-    taxa_selic(MesAtu, AnoAtu, T),
-    calcula_selic(Mes, Ano, MesIni, AnoIni, Taxa),
-    Total is Taxa + T, !.
 
 %=================== OUTROS PREDICADOS ===================%
 % Predicado pra pegar os _Meses últimos meses até _MesFin/_AnoFin.
@@ -279,26 +353,25 @@ renda_adequada(Nome) :-
 
 investir(Nome, Mes, Ano) :-
     renda_alta(Nome),
-    cliente(Nome, moderado, _, _, _, _),
-    investe_cdi(Mes, Ano, 3),
+    cliente(Nome, arrojado, _, _, _, _),
+    investe_ibovespa(Mes, Ano, 3).
 investir(Nome, Mes, Ano) :-
     renda_alta(Nome),
-    cliente(Nome, arrojado, _, _, _, _),
-    investe_ibovespa(Mes, Ano, 3),
-investir(Nome, Mes, Ano) :-
-    renda_media(Nome),
-    cliente(Nome, arrojado, _, _, _, _),
-    viabilidade_dolar(Mes, Ano, 3), 
-investir(Nome, Mes, Ano) :-
-    renda_media(Nome),
     cliente(Nome, moderado, _, _, _, _),
-    viabilidade_lci_lca(Mes, Ano, 3, _), 
-    write('LCI/LCA').
+    viabilidade_dolar(Mes, Ano, 3). 
+investir(Nome, Mes, Ano) :-
+    renda_alta(Nome),
+    cliente(Nome, conservador, _, _, _, _),
+    write('Investir em LCI/LCA.').
+investir(Nome, Mes, Ano) :-
+    renda_media(Nome),
+    cliente(Nome, arrojado, _, _, _, _),
+    investe_selic(Mes, Ano, 3)
+    write('Investir no Tesouro Público.').
 investir(Nome, Mes, Ano) :-
     renda_media(Nome),
     cliente(Nome, conservador, _, _, _, _),
-    viabilidade_selic(Mes, Ano, 3, _),
-    write('Tesouro').
+    investe_cdi(Mes, Ano, 3).
 investir(Nome, Mes, Ano) :-
     renda_baixa(Nome),
     cliente(Nome, conservador, _, _, _, _),
