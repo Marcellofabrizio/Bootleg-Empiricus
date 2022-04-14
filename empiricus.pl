@@ -4,10 +4,6 @@ cliente(lucas  , moderado   ,  5000,  1200,  5000, 0).
 cliente(gabriel, arrojado   , 50000, 10000, 20000, 2).
 cliente(bettina, conservador,  1000,   800,   200, 0).
 
-viabilidade_cbd(_, _, _, _) :- !.
-viabilidade_lci_lca(_, _, _, _) :- !.
-
-%======== TESOURO SELIC ========%
 taxa_selic(1,2018,0.5924).
 taxa_selic(2,2018,0.4723).
 taxa_selic(3,2018,0.5402).
@@ -189,17 +185,28 @@ fechamentoIbovespa(01, 2022, 112.144).
 fechamentoIbovespa(02, 2022, 113.142).
 fechamentoIbovespa(03, 2022, 119.999).
 
+% investimento(Aplicacao, Risco, Rentabilidade).
+investimento(poupanca, baixo, baixo).
+investimento(cdb, baixo, baixo).
+investimento(tesouro, baixo, medio).
+investimento(lci, medio, medio).
+investimento(dolar, medio, medio).
+investimento(acoes, alto, alto).
 
-% Vai calcular o valor do mês corrente e do passado.
-tendencia_ibovespa(Ano, ValorPassado, ValorCorrente) :-
-    % Achar todos os Valores C que existam para esse Mes e Ano e colocá-los na lista Cs
-    findall(C, fechamentoIbovespa(_, Ano, C), Cs),
-    % Somar todos valores de Cs em ValorCorrente.
-    sum_list(Cs, ValorCorrente),
-    % Fazer o mesmo pro AnoPassado
-    AnoPassado is Ano - 1,
-    findall(P, fechamentoIbovespa(_, AnoPassado, P), Ps),
-    sum_list(Ps, ValorPassado).
+conservador(Nomes) :-
+	findall(Nome, investimento(Nome, baixo, _), Nomes).
+
+moderado(Nomes) :-
+	findall(Nome, investimento(Nome, medio, _), Nomes).
+
+arrojado(Nomes) :-
+	findall(Nome, investimento(Nome, alto, _), Nomes).
+
+soma([], 0) :- !.
+soma([N], N) :- !.
+soma([N|R], S) :-
+    soma(R, SR),
+    S is N + SR.
 
 % Se a tendência for crescente, mostra quão grande é o crescimento.
 viabilidade_ibovespa(Ano, Fator) :-
@@ -207,6 +214,15 @@ viabilidade_ibovespa(Ano, Fator) :-
     ValorPassado < ValorCorrente,
     Fator is ValorCorrente / ValorPassado.
 
+perfil_investmento(Nome, Perfil) :-
+    poupanca_adequada(Nome,  _),
+    renda_adequada(Nome),
+    arrojado(Perfil), !.
+perfil_investmento(Nome, Perfil) :-
+    poupanca_adequada(Nome, _),
+    moderado(Perfil), !.
+perfil_investmento(_, Perfil) :-
+    conservador(Perfil), !.
 
 %=================== OUTROS PREDICADOS ===================%
 % Predicado pra pegar os _Meses últimos meses até _MesFin/_AnoFin.
@@ -222,19 +238,43 @@ periodo(MesFin, AnoFin, MesIni, AnoIni, Meses) :-
 periodo(MesFin, AnoFin, MesIni, AnoIni, Meses) :-
     Resto is Meses - 12,
     Ano is AnoFin - 1,
-    periodo(MesFin, Ano, MesIni, AnoIni, Resto).
+    periodo(MesFin, Ano, MesIni, AnoIni, Resto).          
+
+% Por enquanto, só soma todos os valores dos 'Meses' meses até MesFin/AnoFin.
+viabilidade_cdi(MesFin, AnoFin, Meses, Media) :-
+    periodo(MesFin, AnoFin, MesIni, AnoIni, Meses),
+    calcula_cdi(MesFin, AnoFin, MesIni, AnoIni, Total),
+    Media is Total/Meses.
+
+% Predicado que soma recursivamente as taxas
+calcula_cdi(Mes, Ano, MesIni, AnoIni, Total) :-
+    Mes == MesIni, Ano == AnoIni,
+    taxa_cdi(Mes, Ano, Total).
+calcula_cdi(MesAtu, AnoAtu, MesIni, AnoIni, Total) :-
+    periodo(MesAtu, AnoAtu, Mes, Ano, 2), % Não mexer nesse 2! É o decremento de um mês.
+    taxa_cdi(MesAtu, AnoAtu, T),
+    calcula_cdi(Mes, Ano, MesIni, AnoIni, Taxa),
+    Total is Taxa + T, !.
+
+% Vai calcular o valor do mês corrente e do passado.
+tendencia_ibovespa(Mes, Ano, ValorPassado, ValorCorrente) :-
+    % Achar todos os Valores C que existam para esse Mes e Ano e colocá-los na lista Cs
+    findall(C, fechamentoIbovespa(Mes, Ano, C), Cs),
+    % Somar todos valores de Cs em ValorCorrente.
+    sum_list(Cs, ValorCorrente),
+    % Fazer o mesmo pro AnoPassado
+    AnoPassado is Ano - 1,
+    findall(P, fechamentoIbovespa(Mes, AnoPassado, P), Ps),
+    sum_list(Ps, ValorPassado).
 
 
-renda_alta(Nome) :-
-    poupanca_adequada(Nome),
-    renda_adequada(Nome), !.
-renda_media(Nome) :-
-    poupanca_adequada(Nome), !.
-renda_baixa(_) :- !.
+poupanca_adequada(Nome, Min) :-
+    cliente(Nome,_,_,Poupado,_,_,Dependentes,_),
+    Min is (Dependentes+1) * 5000,
+    Poupado >= Min.
 
-
-poupanca_adequada(Nome) :-
-    cliente(Nome,_,Poupado,_,_,Dependentes),
+poupanca_valida(Nome) :-
+    cliente(Nome,_,_,Poupado,_,_,Dependentes,_),
     (Dependentes + 1) * 5000 =< Poupado. 
 
 
@@ -245,39 +285,6 @@ renda_minima(Nome, RendaMinima) :-
 renda_adequada(Nome) :-
     cliente(Nome,_,_,Renda,_,Dependentes),
     renda_minima(Nome, RendaMinima),
-    (Renda*12) > RendaMinima. % renda do ano deve ser maior que a renda minima para ser adequada
+    (Renda*12) > RendaMinima. 
+% renda do ano deve ser maior que a renda minima para ser adequada
 
-
-investir(Nome, Mes, Ano) :-
-    renda_alta(Nome),
-    cliente(Nome, moderado, _, _, _, _),
-    viabilidade_cdi(Mes, Ano, 3, _),
-    write('CDI').
-investir(Nome, _, Ano) :-
-    renda_alta(Nome),
-    cliente(Nome, arrojado, _, _, _, _),
-    viabilidade_ibovespa(Ano, _),
-    write('Ibovespa').
-investir(Nome, Mes, Ano) :-
-    renda_media(Nome),
-    cliente(Nome, arrojado, _, _, _, _),
-    viabilidade_dolar(Mes, Ano, 3, _), 
-    write('Dolar').
-investir(Nome, Mes, Ano) :-
-    renda_media(Nome),
-    cliente(Nome, moderado, _, _, _, _),
-    viabilidade_lci_lca(Mes, Ano, 3, _), 
-    write('LCI/LCA').
-investir(Nome, Mes, Ano) :-
-    renda_media(Nome),
-    cliente(Nome, conservador, _, _, _, _),
-    viabilidade_selic(Mes, Ano, 3, _),
-    write('Tesouro').
-investir(Nome, Mes, Ano) :-
-    renda_baixa(Nome),
-    cliente(Nome, conservador, _, _, _, _),
-    viabilidade_cbd(Mes, Ano, 3, _), 
-    write('Cdb').
-investir(Nome, _, _) :-
-    renda_baixa(Nome),
-    write('Poupanca'), !.
