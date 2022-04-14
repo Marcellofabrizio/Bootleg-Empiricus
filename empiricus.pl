@@ -155,7 +155,6 @@ calcula_dolar(MesAtu, AnoAtu, MesIni, AnoIni, Total) :-
     calcula_dolar(Mes, Ano, MesIni, AnoIni, Taxa),
     Total is Taxa + T, !.
 
-viabilidade_dolar(_, _, _, _) :- !.
 
 %========= CDI =========%
 %  taxas(Mes, Ano, Valor)
@@ -294,7 +293,7 @@ investe_ibovespa(Mes, Ano, Meses) :-
 investe_ibovespa(_,_,_) :-
     write('Ibovespa viável para a venda.').
 
-viabilidade_dolar(Mes, Ano, Meses) :-
+viabilidade_ibovespa(Mes, Ano, Meses) :-
     periodo(Mes, Ano, MesIni, AnoIni, Meses),
     calcula_ibovespa(Mes, Ano, MesIni, AnoIni, Atual),
     periodo(MesIni, AnoIni, MesIniAnt, AnoIniAnt, Meses),
