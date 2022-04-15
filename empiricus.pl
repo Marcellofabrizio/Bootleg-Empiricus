@@ -316,7 +316,7 @@ calcula_ibovespa(MesAtu, AnoAtu, MesIni, AnoIni, Total) :-
 
 %=================== OUTROS PREDICADOS ===================%
 % Predicado pra pegar os _Meses últimos meses até _MesFin/_AnoFin.
-% O mês atual conta como 1 mês, então pra voltar 1, _Meses tem que ser maior que 1.
+% O mês atual conta como 1 mês, então pra voltar 1, _Meses tem que ser 2.
 periodo(MesFin, AnoFin, MesIni, AnoIni, Meses) :-
     MesFin >= Meses,
     MesIni is MesFin - (Meses - 1),
