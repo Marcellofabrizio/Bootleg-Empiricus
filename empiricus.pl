@@ -3,6 +3,11 @@
 cliente(sommerville, moderado   ,  5000,  1200,  5000, 0).
 cliente(pressman   , arrojado   , 50000, 10000, 20000, 2).
 cliente(bettina    , conservador,  1000,   800,   200, 0).
+cliente(marcelino  , conservador,  10000,   8000,   2000, 0).
+
+%investir(pressman,7, 2021).
+%investir(pressman,10, 2020).
+%investir(bettina,03, 2022).
 
 %======== TESOURO SELIC ========%
 taxa_selic(1, 2018, 0.5924).
@@ -385,11 +390,6 @@ investir(Nome, Mes, Ano) :-
     renda_media(Nome),
     cliente(Nome, conservador, _, _, _, _),
     investe_cdb(Mes, Ano, 3).
-investir(Nome, _, _) :-
-    renda_baixa(Nome),
-    cliente(Nome, conservador, _, _, _, _),
-    % viabilidade_cbd(Mes, Ano, 3, _), 
-    write('Cdb').
 investir(Nome, _, _) :-
     renda_baixa(Nome),
     write('Poupanca'), !.
