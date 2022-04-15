@@ -63,9 +63,9 @@ taxa_selic(2, 2022, 0,7400).
 
 investe_selic(Mes, Ano, Meses) :-
     viabilidade_selic(Mes, Ano, Meses),
-    write('Selic viável para compra.'), nl,!.
+    write('Taxa Selic está em crescimento e adequada para investir.'), nl,!.
 investe_selic(_,_,_) :-
-    write('Selic viável para a venda.'),nl.
+    write('Taxa Selic está em queda, rever seus investimentos nela.'),nl.
 
 viabilidade_selic(Mes, Ano, Meses) :-
     periodo(Mes, Ano, MesIni, AnoIni, Meses),
@@ -215,9 +215,9 @@ taxa_cdi(02, 2022, 0.7600).
 
 investe_cdb(Mes, Ano, Meses) :-
     viabilidade_cdi(Mes, Ano, Meses),
-    write('CDB viável para compra.'),nl, !.
+    write('CDI está em alta e recomendamos o invetimento em CDB.'),nl, !.
 investe_cdb(_, _, _) :-
-    write('CDB viável para a venda.'),nl.
+    write('CDI está em baixa e recomendamos rever seus investimentos no CDB.'),nl.
 
 % Por enquanto, só soma todos os valores dos _Meses meses até _MesFin/_AnoFin.
 viabilidade_cdi(Mes, Ano, Meses) :-
